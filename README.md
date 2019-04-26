@@ -62,7 +62,7 @@ The staking and un-staking actions are governed by the following formulas:
 
 **Unstaking:**
 
-![](http://latex.codecogs.com/gif.latex?c&space;=&space;b&space;*&space;\(\(1&plus;s&space;/&space;t\)^{\frac{1}{r}})
+![](http://latex.codecogs.com/gif.latex?c&space;=&space;b&space;*&space;\(1&plus;s&space;/&space;t\)^{\frac{1}{r}})
 
 Where `s` is the resulting stake in the court and `d` is the users deposit. When un-staking, `c` is the amount of ANT returned. The other variables represent state and parameters of the staking curve. `r` is the ratio of deposits to total stake, `b` is the balance of ANT in the staking contract, and `t` is the total amount of distributed stake.  
 
