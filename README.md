@@ -1,30 +1,28 @@
 # Aragon Network
 
-The Aragon Network is an Aragon organization which provides infrastructure and services to users of the Aragon platform. The Network is governed by holders of its native token ANT.
+The Aragon Network is an Aragon organization which provides infrastructure and services to users of the Aragon platform, and is governed by ANT holders. The existing Aragon infrastructure enables users to create and manage organizations. Each Aragon organization exists as a set of smart contracts which define the organization's stakeholders and their associated rights and privileges. However, some rights and privileges require subjective constraints which cannot be encoded in a smart contract directly.
 
-Existing Aragon platform infrastructure enables users to create and manage organizations. Each Aragon organization exists as a set of smart contracts which define the organization's stakeholders and their associated rights and privileges. However, some rights and privileges are impossible to encode with smart contracts alone because smart contracts cannot directly encode subjective constraints.
-
-The Aragon Court is a decentralized oracle protocol developed and maintained by the Aragon Network. The Aragon Court can be used by organizations, including the Aragon Network, to resolve subjective disputes with binary outcomes. When combined with the existing Aragon infrastructure, it enables any organization to create *proposal agreements* which define subjective constraints on an organization's operation that can be enforced even by a minority stakeholder.
+The Aragon Court is a decentralized oracle protocol developed and maintained by the Aragon Network. The Aragon Court can be used by organizations, including the Aragon Network, to resolve subjective disputes with binary outcomes. When combined with the existing Aragon infrastructure, it enables an organization to create *proposal agreements* which define subjective constraints on an organization's operation that can be enforced by a minority stakeholders.
 
 ## Aragon's Permission Architecture
 
-Organizations control which addresses have access to perform actions on behalf of the organization in a permission registry called the A*ccess Control List*. Addresses on the registry can be externally owned accounts or contracts. Some contracts are intended to *forward* actions based on pre-defined criteria, for example a voting app will forward action after the successful approval vote.
+Aragon Organizations control which addresses have access to perform actions on behalf of the organization in a permission registry called the *Access Control List*. Addresses on the registry can be externally owned accounts or contracts. Some contracts are intended to *forward* actions based on pre-defined criteria, for example a voting app will forward action after the successful approval vote.
 
-By chaining multiple permissions together we can define complex criteria which constrain how actions can be performed within the organization. To illustrate this we can look at common scenario where we want to allow treasury funds to be transferred, but only if they are 1) proposed by a member of the organization, 2) approved by a majority of members, 3) within a pre-determined budget. This can be accomplished by configuring a permission chain using multiple applications each imposing logical constraints on the final action as follows:
+By chaining multiple contracts together we can define complex criteria which constrain how actions can be performed within the organization. To illustrate this we can look at common scenario where an organization want to allow treasury funds to be transferred, but only if they are 1) proposed by a member of the organization, 2) approved by a majority of members, and 3) within a pre-determined budget. This can be accomplished by configuring a chain of permissions with each link imposing logical constraints on the final action as follows:
 
 ![](images/permissions.png)
 
 *Figure 1: Token Manager --> Voting --> Finance --> Vault*
 
-The vault, which stores the organizations assets, grants the transfer role only to the finance application, which internally implements budgeting and recurring payment logic. The finance application's *Create Payments* role is assigned exclusively to the Voting application so that the only way to create payments is to successfully pass a vote. The voting application's  *Create Votes* role is granted exclusively to the Token Manager of the organization's native token. The Token Manager will forward actions from Token Holders the Token Manager's associated token.
+The vault, which stores the organizations assets, grants the transfer role only to the finance application, which internally implements budgeting logic. The finance application's *Create Payments* role is assigned exclusively to the Voting application so that the only way to create payments is to successfully pass a vote. The voting application's  *Create Votes* role is granted exclusively to the Token Manager of the organization's native token. The Token Manager will forward actions from Token Holders the Token Manager's associated token.
 
-This process effectively constrains how funds can be transferred in the organization, but the approval of a given transfer is ultimately left up to a majority vote, and its not unreasonable to be concerned that a majority of the organization's members might one day decide liquidate the organization, excluding minority stakeholders from the distribution of funds.
+This process effectively constrains how funds can be transferred in the organization, but the approval of a given transfer is ultimately authorized by majority vote, and its not unreasonable more a minority stakeholder to be concerned that a majority of the organization's members might decide liquidate the organization and exclude minority stakeholders in the process.
 
-To avoid this organization's need a mechanism to impose a subjective constraint that can be enforced by the actions of any individual within the organization rather than a majority of participants.
+To avoid this organization's need a mechanism to impose a constraint that can be enforced by the actions of any individual within the organization rather than a majority of participants.
 
 ### Proposal Agreements
 
-Proposal Agreements are designed to facilitate these types of constraints within Aragon organizations. They allow an organization to define human readable terms and require proposers to deposit collateral before the users intent can be forwarded.
+Proposal Agreements are designed to facilitate these types of constraints within Aragon organizations. They allow an organization to define human readable terms and require proposers to deposit collateral before the users proposal can be forwarded to a voting app.
 
 The human readable terms can be used to protect the interest of minority stakeholders as described in the previous section, but they can also be used to define basic quality standards for what supplemental information must be included with a proposal.
 
@@ -38,15 +36,15 @@ With this flow, when a user wants to make a fund transfer they will be prompted 
 
 ### Dispute Creation
 
-If a user feels that a submitted proposal violated the proposal agreement terms they can choose to raise a dispute. When they raise a dispute they will need to deposit an equivalent amount of collateral, along with initial *dispute fees* determined by the court. They can also provide *evidence* to support their claim. The vote will be immediately paused until the dispute is resolved.
+If a minority stakeholder feels that a submitted proposal has violated the proposal agreement terms they can choose to raise a dispute. When they raise a dispute they will need to deposit an equivalent amount of collateral, along with initial *dispute fees* determined by the Aragon Court. They can also provide *evidence* to support their position. The vote will be immediately paused until the dispute is resolved.
 
-If the original proposer feels that the dispute is valid they can opt to do nothing and the dispute will be automatically ruled in favor of the disputer. The proposers collateral will be transferred to the disputer and the vote will be canceled. If the original proposer believes they will win the dispute then they must pay *dispute fees* and provide evidence to support their position.
+If the original proposer feels that the dispute is valid they can opt to do nothing and the dispute will be automatically ruled in favor of the disputer. The proposers collateral will be transferred to the disputer and the vote will be canceled. If the original proposer believes they will win the dispute then they must also deposit *dispute fees* and provide evidence to support their position.
 
-Once both parties have submitted evidence and dispute fees, the case is scheduled to be reviewed by the *court*.
+Once both parties have submitted evidence and dispute fees, the case is scheduled to be reviewed.
 
 ## Aragon Court Protocol
 
-Proposal Agreement dispute resolution relies on a decentralized oracle protocol referred to as the *court* where *jurors* stake the Aragon Network's native asset ANT in order to earn the right to perform dispute resolution service and earn a portion of *dispute resolution fees*.
+Proposal Agreement disputes rely on a decentralized oracle protocol referred to as the *court* where *jurors* stake the Aragon Network's native asset ANT in order to earn the right to perform dispute resolution service and earn a portion of *dispute resolution fees*.
 
 When a dispute occurs, a jury is formed by drafting jurors via *stake-weighted sortition*. Drafted jurors are required to commit to a ruling on the dispute within a commitment period, and then reveal their ruling after all drafted jurors have committed. The verdict is returned based on the majority decision of drafted jurors.
 
@@ -54,7 +52,7 @@ Before the verdict is enforced, there is an opportunity to *appeal*, which repea
 
 ### Juror Staking
 
-In order to participate as a juror, an individual must acquire ANT and then deposit it into the court's staking contract. Similar to a [token bonding curve](https://blog.relevant.community/bonding-curves-in-depth-intuition-parametrization-d3905a681e0a), the staking contract uses the current balance of deposited ANT to determine an exchange rate between ANT and the user's stake in the court. Unlike a token bonding curve, we do not treat the resulting economic stake as a transferrable token. This curved staking approach encourages jurors to participate early and establish the credibility of an instance of the court, and enables the network to potentially deploy multiple instances of the court protocol which compete with one another by specializing in resolving specific types of disputes.
+In order to participate as a juror, an individual must acquire ANT and then deposit it into the court's staking contract. Similar to a [token bonding curve](https://blog.relevant.community/bonding-curves-in-depth-intuition-parametrization-d3905a681e0a), the staking contract uses the current balance of deposited ANT to determine an exchange rate between ANT and the user's stake in the court. Unlike a token bonding curve, we do not treat the resulting economic stake as a transferrable token. This curved staking approach encourages jurors to participate early and establish the credibility of an instance of the court, and enables the network to deploy multiple instances of the court protocol which compete with one another by specializing in resolving specific types of disputes.
 
 The staking and un-staking actions are governed by the following formulas:
 
@@ -72,7 +70,7 @@ Once a prospective juror has staked they are considered *active* and eligible to
 
 ### Juror Drafting
 
-Juror drafting is managed via a process of *stake-weighted sortition*. In order to manage the sortition process efficiently, all of the court's operations are scheduled into *Terms. Terms* are defined in seconds and cannot be changed after the Court has been initialized. Terms are transitioned by calling a public *heartbeat* function which is used to make updates to *active juror stakes* from the preceding term and generate a new *random seed* for use during the subsequent term. A portion of the courts fees are used to compensate the caller of the heartbeat for gas usage.
+Juror drafting is managed via a process of *stake-weighted sortition*. In order to manage the sortition process efficiently, all of the court's operations are scheduled into *Terms*. *Terms* are defined in seconds and cannot be changed after the Court has been initialized. Terms are transitioned by calling a public *heartbeat* function which is used to make updates to *active juror stakes* from the preceding term and generate a new *random seed* for use during the subsequent term. A portion of the courts fees are used to compensate the caller of the heartbeat for gas usage.
 
 ![](images/terms.png)
 
@@ -88,7 +86,7 @@ To make the draft function efficient, active jurors are arranged into a tree str
 
 *Figure 4: Traversing the sortition tree to select a juror*
 
-Due to gas constraints, the draft function can select at most 100 juror slots per call, so to select additional jurors we can do selection in multiple batches across multiple transactions or we can adjust the amount of stake which is committed to a ruling per juror slot in order to increase the amount of stake that is drafted.
+Due to gas constraints, the draft function can select at most 100 juror slots per call, so to select additional jurors the sortition process can be broken into multiple batches spanning multiple transactions. To minimize the number of transactions required to select a specific proportion of total stake the amount of stake per juror slot is increased.
 
 The sortition tree must be updated between terms as the proportional stake of jurors changes. Changes are queued and executed when the heartbeat function is called.
 
@@ -102,7 +100,7 @@ After the conclusion of *reveal period*, a majority of support among drafted jur
 
 ### Appeals
 
-Each dispute is subject to a maximum number of appeal rounds. The number of appeal rounds determines how the sortition tree and sub-trees must be structured and therefore cannot be adjusted on a per-dispute basis. Since each dispute and appeal round has a fixed duration, the max appeal rounds also determines the maximum amount of time before a final decision is reached.
+Each dispute is subject to a maximum number of appeal rounds. Since each dispute and appeal round has a fixed duration, the max appeal rounds also determines the maximum amount of time before a final decision is reached.
 
 Appeals can be triggered after a dispute has been resolved with a preliminary ruling in favor of one outcome or the other. In order for an Appeal to occur both sides of the dispute must deposit additional collateral. If neither side deposits the required collateral to trigger the next appeal round, the preliminary ruling is finalized. If only one side deposits the required collateral the ruling is immediately finalized in their favor. If both sides deposit the required collateral then the appeal round is scheduled.
 
