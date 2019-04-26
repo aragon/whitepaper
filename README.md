@@ -77,6 +77,7 @@ Juror drafting is managed via a process of *stake-weighted sortition*. In order 
 ![](images/terms.png)
 
 *Figure 3: Court operations are broken into Terms*
+
 For each dispute or appeal we have a number of available *juror slots* which must be filled. Each slot can be thought of as a seat on the jury. A single juror can occupy multiple seats, but each seat is associated with an equal portion of their stake which is committed and locked until the dispute is fully resolved.
 
 One block after the heartbeat function is executed for the term in which a dispute is scheduled, a function to draft jurors for that dispute is called. This function can be called at any point during the term and the resulting selection of jurors will be the same. If this transaction does not happen before the term ends the dispute must be rescheduled for a subsequent court term.
@@ -85,7 +86,7 @@ To make the draft function efficient, active jurors are arranged into a tree str
 
 ![](images/sortition-tree.png)
 
-Figure 4: Traversing the sortition tree to select a juror
+*Figure 4: Traversing the sortition tree to select a juror*
 
 Due to gas constraints, the draft function can select at most 100 juror slots per call, so to select additional jurors we can do selection in multiple batches across multiple transactions or we can adjust the amount of stake which is committed to a ruling per juror slot in order to increase the amount of stake that is drafted.
 
