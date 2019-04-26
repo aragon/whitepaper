@@ -4,7 +4,7 @@ Aragon is a platform for creating and operating an organization on a blockchain 
 
 The Aragon Network is an Aragon organization which provides infrastructure and services to users of the Aragon platform. The Network is governed by holders of its native token ANT.
 
-The Aragon Court is a decentralized oracle protocol developed and maintained by the Aragon Network. The Aragon Court can be used by organizations to resolve subjective disputes with binary outcomes. When combined with the existing Aragon infrastructure, it enables organizations to create *proposal agreements* which define subjective constraints on an organization's operation that can be enforced even by a minority stakeholder in the organization. Jurors stake ANT in order to participate as dispute resolution service providers in exchange for fees provided by organizations which opt-in to use the service.
+The Aragon Court is a decentralized oracle protocol developed and maintained by the Aragon Network. The Aragon Court can be used by organizations, including the Aragon Network, to resolve subjective disputes with binary outcomes. When combined with the existing Aragon infrastructure, it enables any organization to create *proposal agreements* which define subjective constraints on an organization's operation that can be enforced even by a minority stakeholder. Jurors stake ANT in order to participate as dispute resolution service providers in exchange for fees provided by organizations which opt-in to use the service.
 
 ## Aragon's Permission Architecture
 
@@ -54,7 +54,7 @@ Before the verdict is enforced, there is an opportunity to *appeal*, which repea
 
 ### Juror Staking
 
-In order to participate as a juror, an individual must acquire ANT and then deposit it into the court's staking contract. Similar to a [token bonding curve](https://blog.relevant.community/bonding-curves-in-depth-intuition-parametrization-d3905a681e0a), the staking contract uses the current balance of deposited ANT to determine an exchange rate between ANT and the user's stake in the court. Unlike a token bonding curve, we do not treat the resulting economic stake as a transferrable token. This curved staking approach encourages jurors to participate early and establish the credibility of an instance of the court, and enables the network to potentially deploy multiple instances of the court protocol which compete with one another by specializing in resolving specific types of disputes. 
+In order to participate as a juror, an individual must acquire ANT and then deposit it into the court's staking contract. Similar to a [token bonding curve](https://blog.relevant.community/bonding-curves-in-depth-intuition-parametrization-d3905a681e0a), the staking contract uses the current balance of deposited ANT to determine an exchange rate between ANT and the user's stake in the court. Unlike a token bonding curve, we do not treat the resulting economic stake as a transferrable token. This curved staking approach encourages jurors to participate early and establish the credibility of an instance of the court, and enables the network to potentially deploy multiple instances of the court protocol which compete with one another by specializing in resolving specific types of disputes.
 
 The staking and un-staking actions are governed by the following formulas:
 
