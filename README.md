@@ -2,7 +2,7 @@
 
 The Aragon Network is an Aragon organization which provides infrastructure and services to users of the Aragon platform. The Network is governed by holders of its native token ANT.
 
-Existing Aragon platform infrastructure enables users to create and manage organization. Each Aragon organization exists as a set of smart contracts which define the organization's stakeholders and their associated rights and privileges. However, some rights and privileges are impossible to encode with smart contracts alone because smart contracts cannot directly encode subjective constraints.
+Existing Aragon platform infrastructure enables users to create and manage organizations. Each Aragon organization exists as a set of smart contracts which define the organization's stakeholders and their associated rights and privileges. However, some rights and privileges are impossible to encode with smart contracts alone because smart contracts cannot directly encode subjective constraints.
 
 The Aragon Court is a decentralized oracle protocol developed and maintained by the Aragon Network. The Aragon Court can be used by organizations, including the Aragon Network, to resolve subjective disputes with binary outcomes. When combined with the existing Aragon infrastructure, it enables any organization to create *proposal agreements* which define subjective constraints on an organization's operation that can be enforced even by a minority stakeholder.
 
