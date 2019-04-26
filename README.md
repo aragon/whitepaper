@@ -67,7 +67,7 @@ The Jury Ruling mechanism operates as a schelling point game where jurors indivi
 Since a ruling must aggregate input from all jurors, the following procedure is used to create a jury ruling and reward participants.
 
  1. If a majority of the jury indicate the case should be dismissed, then the case is immediately dismissed, with no changes to the agreement.
- 2. If a majority of the jury indicates that the Agreements expiration should be extended, then the expiration is extended by the median value of those juror votes. If no appeal is made, than jurors who voted for extending the expiration earn reputation, and those that did not vote for extending the expiration lose reputation.  
+ 2. If a majority of the jury indicates that the Agreements expiration should be extended, then the expiration is extended by the median value of those juror votes. If no appeal is made, then jurors who voted for extending the expiration earn reputation, and those that did not vote for extending the expiration lose reputation.  
  3. If a majority of the jury indicates that collateral should be re-assigned then collateral is re-assigned based on jurors voting on a new collateral ratio between the two parties and taking the median value. If no appeal is made, than jurors who voted for re-assigning the collateral earn reputation, and those that did not vote for extending the expiration lose reputation.
  4. If no appeal is made Fees are distributed to all jurors regardless of whether they gained or loss reputation.  
  5. If any juror flags the dispute for review, before the court proceeds with a ruling the evidence and jury's ruling is reviewed.
