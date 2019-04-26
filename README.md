@@ -1,10 +1,10 @@
 # Aragon Network
 
-Aragon is a platform for creating and operating an organization on a blockchain network. Each Aragon organization exists as a set of smart contracts which define the organization's stakeholders and their associated rights and privileges. However, some rights and privileges are impossible to encode with smart contracts alone because smart contracts cannot directly encode subjective constraints. Voting is one way to impose a subjective constraint using a smart contract as it takes human inputs as a filter, however, voting assumes a majority of stakeholders will always honor the mutually understood intent of the organization. If we want organizations to be able to protect the interests of minority and passive participants we need more effective ways to enforce subjective constraints on an organization's actions.
-
 The Aragon Network is an Aragon organization which provides infrastructure and services to users of the Aragon platform. The Network is governed by holders of its native token ANT.
 
-The Aragon Court is a decentralized oracle protocol developed and maintained by the Aragon Network. The Aragon Court can be used by organizations, including the Aragon Network, to resolve subjective disputes with binary outcomes. When combined with the existing Aragon infrastructure, it enables any organization to create *proposal agreements* which define subjective constraints on an organization's operation that can be enforced even by a minority stakeholder. Jurors stake ANT in order to participate as dispute resolution service providers in exchange for fees provided by organizations which opt-in to use the service.
+Existing Aragon platform infrastructure enables users to create and manage organization. Each Aragon organization exists as a set of smart contracts which define the organization's stakeholders and their associated rights and privileges. However, some rights and privileges are impossible to encode with smart contracts alone because smart contracts cannot directly encode subjective constraints.
+
+The Aragon Court is a decentralized oracle protocol developed and maintained by the Aragon Network. The Aragon Court can be used by organizations, including the Aragon Network, to resolve subjective disputes with binary outcomes. When combined with the existing Aragon infrastructure, it enables any organization to create *proposal agreements* which define subjective constraints on an organization's operation that can be enforced even by a minority stakeholder.
 
 ## Aragon's Permission Architecture
 
