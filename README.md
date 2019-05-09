@@ -19,7 +19,7 @@ ate Payments* role is assigned exclusively to the Voting application so that the
 
 This process effectively constrains how funds can be transferred in the organization, but the approval of a given transfer is ultimately authorized by majority vote. It's not unreasonable for a minority stakeholder to be concerned that a majority of stakeholders might decide to liquidate the organization and exclude minority stakeholders in the process.
 
-To avoid this an organization needs a mechanism to impose a constraint that can be enforced by the actions of any individual within the organization rather than a majority of participants.
+To avoid a hostile liquidation scenario like this an organization needs a mechanism to impose a constraint that can be enforced by the actions of any individual within the organization rather than a majority of participants.
 
 ### Proposal Agreements
 
