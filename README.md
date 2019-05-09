@@ -76,7 +76,7 @@ Juror drafting is managed via a process of *stake-weighted sortition*. In order 
 
 *Figure 3: Court operations are broken into Terms*
 
-For each dispute or appeal we have a number of available *juror slots* which must be filled. Each slot can be thought of as a seat on the jury. A single juror can occupy multiple seats, but each seat is associated with an equal portion of their stake which is committed and locked until the dispute is fully resolved.
+For each dispute or appeal we have a number of available *juror slots* that must be filled. Each slot can be thought of as a seat on the jury. A single juror can occupy multiple seats, but each seat is associated with an equal portion of their stake, which is committed and locked until the dispute is fully resolved.
 
 One block after the heartbeat function is executed for the term in which a dispute is scheduled, a function to draft jurors for that dispute can be called. This function can be called at any point during the term and the resulting selection of jurors will be the same. If this transaction does not happen before the term ends the dispute must be rescheduled for a subsequent court term.
 
