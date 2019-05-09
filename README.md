@@ -14,8 +14,7 @@ By chaining multiple contracts together we can define complex criteria which con
 
 *Figure 1: Token Manager --> Voting --> Finance --> Vault*
 
-The Vault, which stores the organization's assets, grants the transfer role only to the Finance application, which internally implements budgeting logic. The Finance application's *Cre
-ate Payments* role is assigned exclusively to the Voting application so that the only way to create payments is to successfully pass a vote. The Voting application's  *Create Votes* role is granted exclusively to the Token Manager of the organization's native token. The Token Manager will forward actions from token holders of the Token Manager's associated token.
+The Vault, which stores the organization's assets, grants the transfer role only to the Finance application, which internally implements budgeting logic. The Finance application's *Create Payments* role is assigned exclusively to the Voting application so that the only way to create payments is to successfully pass a vote. The Voting application's  *Create Votes* role is granted exclusively to the Token Manager of the organization's native token. The Token Manager will forward actions from token holders of the Token Manager's associated token.
 
 This process effectively constrains how funds can be transferred in the organization, but the approval of a given transfer is ultimately authorized by majority vote. It's not unreasonable for a minority stakeholder to be concerned that a majority of stakeholders might decide to liquidate the organization and exclude minority stakeholders in the process.
 
@@ -125,9 +124,11 @@ In the first adjudication round of a dispute (the original round created with th
 
 ## Fee Summary
 
-In order for the court to operate fees must be captured from users to compensate jurors for their effort, risk, and opportunity cost of capital. The market for dispute resolution services exhibits some dynamics of a predator-prey relationship. Disputes will be more rare if there is a common expectation that the dispute resolution process is reliable and fair. The result is that as disputes become more rare, or are settled in early dispute rounds, the incentive to participate as a juror decreases. As these incentives decrease there will be less stake in the court and the court may be perceived as less reliable, resulting in more disputes and more appeals leading to overall less consistent and efficient operation. To resolve this issue, fees are captured not just when disputes occur, but also on a recurring basis from users even when no disputes occur.
+In order for the court to operate fees must be captured from users to compensate jurors for their effort, risk, and opportunity cost of capital. The market for dispute resolution services exhibits some dynamics of a predator-prey relationship where the demand to participate as a juror depends on the volume of disputes, and the volume of disputes depends on the reliable presence of honest jurors.
 
-- **Agreement Tax**: A tax is imposed on organizations which choose to use the court as an arbitration provider. Taxes must be paid on a recurring basis for the agreement to remain valid. These fees are split between the Aragon Network's treasury and among all actively staked jurors.
+Disputes will be more rare if there is a common expectation that the dispute resolution process is reliable and fair. The result is that as disputes become more rare, or are settled in early dispute rounds, the incentive to participate as a juror decreases. As these incentives decrease there will be less stake in the court and the court may be perceived as less reliable, resulting in more disputes and more appeals leading to overall less consistent and efficient operation. To resolve this issue, fees are captured not just when disputes occur, but also on a recurring basis from users even when no disputes occur.
+
+- **Subscription Fee**: A subscription fee is imposed on organizations which choose to use the court as an arbitration provider. Subscription fee must be paid on a recurring basis for the agreement to remain valid. These fees are split between the Aragon Network's treasury and among all actively staked jurors.
 - **Dispute Fee**: Dispute fees are captured at the time a dispute or appeal occurs. And are calculated based on a flat amount times the amount of juror stake selected in the dispute or appeal round. These fees are distributed only to drafted jurors who rule in favor of winning side.
 
 This fee structure ensures that there is a consistent stream of revenue to support the operation of the court even if disputes occur irregularly. Fees are governed by the Aragon Network organization as described below.
