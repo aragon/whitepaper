@@ -16,9 +16,9 @@ By chaining multiple contracts together we can define complex criteria which con
 
 The vault, which stores the organizations assets, grants the transfer role only to the finance application, which internally implements budgeting logic. The finance application's *Create Payments* role is assigned exclusively to the Voting application so that the only way to create payments is to successfully pass a vote. The voting application's  *Create Votes* role is granted exclusively to the Token Manager of the organization's native token. The Token Manager will forward actions from Token Holders the Token Manager's associated token.
 
-This process effectively constrains how funds can be transferred in the organization, but the approval of a given transfer is ultimately authorized by majority vote, and its not unreasonable more a minority stakeholder to be concerned that a majority of the organization's members might decide liquidate the organization and exclude minority stakeholders in the process.
+This process effectively constrains how funds can be transferred in the organization, but the approval of a given transfer is ultimately authorized by majority vote. It's not unreasonable for a minority stakeholder to be concerned that a majority of stakeholders might decide to liquidate the organization and exclude minority stakeholders in the process.
 
-To avoid this organization's need a mechanism to impose a constraint that can be enforced by the actions of any individual within the organization rather than a majority of participants.
+To avoid this the organization's need a mechanism to impose a constraint that can be enforced by the actions of any individual within the organization rather than a majority of participants.
 
 ### Proposal Agreements
 
@@ -78,7 +78,7 @@ Juror drafting is managed via a process of *stake-weighted sortition*. In order 
 
 For each dispute or appeal we have a number of available *juror slots* which must be filled. Each slot can be thought of as a seat on the jury. A single juror can occupy multiple seats, but each seat is associated with an equal portion of their stake which is committed and locked until the dispute is fully resolved.
 
-One block after the heartbeat function is executed for the term in which a dispute is scheduled, a function to draft jurors for that dispute is called. This function can be called at any point during the term and the resulting selection of jurors will be the same. If this transaction does not happen before the term ends the dispute must be rescheduled for a subsequent court term.
+One block after the heartbeat function is executed for the term in which a dispute is scheduled, a function to draft jurors for that dispute can be called. This function can be called at any point during the term and the resulting selection of jurors will be the same. If this transaction does not happen before the term ends the dispute must be rescheduled for a subsequent court term.
 
 To make the draft function efficient, active jurors are arranged into a tree structure based on their stake. Using the random seed for the term and the id of the dispute a random number is generated and used to traverse the tree and arrive at a juror. This process is repeated until all juror slots for the dispute have been filled.
 
@@ -86,7 +86,7 @@ To make the draft function efficient, active jurors are arranged into a tree str
 
 *Figure 4: Traversing the sortition tree to select a juror*
 
-Due to gas constraints, the draft function can select at most 100 juror slots per call, so to select additional jurors the sortition process can be broken into multiple batches spanning multiple transactions. To minimize the number of transactions required to select a specific proportion of total stake the amount of stake per juror slot is increased.
+Due to gas constraints, the draft function can select at most 100 juror slots per call. More that 100 juror slots can be selected using multiple transactions. To minimize the number of transactions required to select a specific proportion of total stake, the required amount of stake per juror slot can be increased in subsequent appeal rounds.
 
 The sortition tree must be updated between terms as the proportional stake of jurors changes. Changes are queued and executed when the heartbeat function is called.
 
@@ -104,7 +104,7 @@ Each dispute is subject to a maximum number of appeal rounds. Since each dispute
 
 Appeals can be triggered after a dispute has been resolved with a preliminary ruling in favor of one outcome or the other. In order for an Appeal to occur both sides of the dispute must deposit additional collateral. If neither side deposits the required collateral to trigger the next appeal round, the preliminary ruling is finalized. If only one side deposits the required collateral the ruling is immediately finalized in their favor. If both sides deposit the required collateral then the appeal round is scheduled.
 
-The amount of required collateral depends on the appeal round and is a multiple of the fees required to compensate selected jurors. In higher appeal rounds where more juror stake is selected to adjudicate the dispute, the base amount of collateral required will be higher. The amount of collateral required will be a multiple of this amount, 2x the base amount for the side which is reinforcing the preliminary ruling, and 3x the base amount for side which is appealing the preliminary ruling. These deposit do not need to be supplied by a single party, but can be crowdsourced. When a final ruling is reached, the collateral of the loosing side will be used to compensate jurors and reward funders of the opposing side proportional to their contribution.
+The amount of required collateral depends on the appeal round and is a multiple of the fees required to compensate selected jurors. In higher appeal rounds where more juror stake is selected to adjudicate the dispute, the base amount of collateral required will be higher. The total amount of collateral required to appeal will be a multiple of this amount, 2x the base amount for the side which is reinforcing the preliminary ruling, and 3x the base amount for side which is appealing the preliminary ruling. When the dispute is finalized the base amount is used to compensate jurors and the remainder is used to compensate the winning party for risking their appeal deposit. Appeal deposits can be crowdsourced so they do not need to be supplied by a single party. 
 
 ### Final Ruling
 
@@ -120,7 +120,7 @@ In case that no juror in a round voted for the final ruling, the juror tokens wi
 
 If there was any appeal rounds before the final ruling, the total amount of collateral that was deposited for triggering each round will be assigned to the appealer supporting the final ruling.
 
-In the first adjudication round of a dispute (the original round created with the dispute), the Court doesn't directly manage collateral (as there may not be collateral at all or a different token is used). In case that there was collateral at stake depending on the Court ruling, whenever the Court has a final ruling it will notify the contract being *arbitered* with the ruling and this contract can then distribute collateral.
+In the first adjudication round of a dispute (the original round created with the dispute), the Court doesn't directly manage collateral (as there may not be collateral at all or a different token is used). In case that there was collateral at stake depending on the Court ruling, whenever the Court has a final ruling it will notify the contract being *arbitrated* with the ruling and this contract can then distribute collateral.
 
 ## Fee Summary
 
