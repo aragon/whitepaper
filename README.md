@@ -16,15 +16,19 @@ By chaining multiple contracts together we can define complex criteria which con
 
 The vault, which stores the organizations assets, grants the transfer role only to the finance application, which internally implements budgeting logic. The finance application's *Create Payments* role is assigned exclusively to the Voting application so that the only way to create payments is to successfully pass a vote. The voting application's  *Create Votes* role is granted exclusively to the Token Manager of the organization's native token. The Token Manager will forward actions from Token Holders the Token Manager's associated token.
 
+<<<<<<< HEAD
 This process effectively constrains how funds can be transferred in the organization, but the approval of a given transfer is ultimately authorized by majority vote. It's not unreasonable for a minority stakeholder to be concerned that a majority of stakeholders might decide to liquidate the organization and exclude minority stakeholders in the process.
+=======
+This process effectively constrains how funds can be transferred in the organization, but the approval of a given transfer is ultimately authorized by majority vote, and it's not unreasonable for a minority stakeholder to be concerned that a majority of the organization's members might decide liquidate the organization and exclude minority stakeholders in the process.
+>>>>>>> 50506959991d8a9b5f9b30d34fd70327b1767b20
 
 To avoid this the organization's need a mechanism to impose a constraint that can be enforced by the actions of any individual within the organization rather than a majority of participants.
 
 ### Proposal Agreements
 
-Proposal Agreements are designed to facilitate these types of constraints within Aragon organizations. They allow an organization to define human readable terms and require proposers to deposit collateral before the users proposal can be forwarded to a voting app.
+Proposal Agreements are designed to facilitate these types of constraints within Aragon organizations. They enable an organization to define human-readable terms that proposals must conform to and require proposers to deposit collateral before their proposal can be forwarded to a voting app.
 
-The human readable terms can be used to protect the interest of minority stakeholders as described in the previous section, but they can also be used to define basic quality standards for what supplemental information must be included with a proposal.
+The human-readable terms can be used to protect the interest of minority stakeholders as described in the previous section, but they can also be used to define basic quality standards for what supplemental information must be included with a proposal.
 
 Proposal agreements can be paired with a Voting app by assigning the *create vote*, *pause vote*, and *cancel vote* roles.
 
