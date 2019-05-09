@@ -137,7 +137,7 @@ This fee structure ensures that there is a consistent stream of revenue to suppo
 
 Governance authority over the court is granted to ANT holders by way of an Aragon organization.
 
-Initially, all votes will last 1 Month, require 50% approval and 1% approval quorum. Creating votes requires depositing 1000 ANT into a *proposal agreement* with the following terms:
+Initially, all votes will last 1 Month, require 50% Support and 1% Minimum Acceptance Quorum. Creating votes requires depositing 1000 ANT into a *Proposal Agreement* with the following terms:
 
 > Proposals must be made in good faith with the intention to improve the Network's operational efficiency, quality, or breadth of service, and benefit all ANT holders in equal measure.
 
