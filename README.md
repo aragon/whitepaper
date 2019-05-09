@@ -108,7 +108,7 @@ The amount of required collateral depends on the appeal round and is a multiple 
 
 ### Final Ruling
 
-A final ruling is reached if a preliminary ruling is produced and neither side appeals, or if only one side appeals, or if the maximum number of appeals are reached. When a final ruling is produced the court needs to process collateral and stake redistribution.
+A final ruling is reached if a preliminary ruling is produced and neither side appeals, if only one side appeals, or if the maximum number of appeals are reached. When a final ruling is produced, the court needs to process collateral and stake redistribution.
 
 **Redistributing and Unlocking Juror Stake**
 
