@@ -36,9 +36,9 @@ With this flow, when a user wants to make a fund transfer they will be prompted 
 
 ### Dispute Creation
 
-If a minority stakeholder feels that a submitted proposal has violated the proposal agreement terms they can choose to raise a dispute. When they raise a dispute they will need to deposit an equivalent amount of collateral, along with initial *dispute fees* determined by the Aragon Court. They can also provide *evidence* to support their position. The vote will be immediately paused until the dispute is resolved.
+If a minority stakeholder feels that a submitted proposal has violated the proposal agreement terms then they can choose to raise a dispute. When they raise a dispute they will need to deposit an equivalent amount of collateral, along with initial *dispute fees* as determined by the Aragon Court. They can also provide *evidence* to support their position. The vote will be immediately paused until the dispute is resolved.
 
-If the original proposer feels that the dispute is valid they can opt to do nothing and the dispute will be automatically ruled in favor of the disputer. The proposers collateral will be transferred to the disputer and the vote will be canceled. If the original proposer believes they will win the dispute then they must also deposit *dispute fees* and provide evidence to support their position.
+If the original proposer feels that the dispute is valid then they can opt to do nothing and the dispute will be automatically ruled in favor of the disputer. The proposer's collateral will be transferred to the disputer and the vote will be canceled. If the original proposer believes they will win the dispute then they must also deposit *dispute fees* and provide evidence to support their position.
 
 Once both parties have submitted evidence and dispute fees, the case is scheduled to be reviewed.
 
@@ -48,7 +48,7 @@ Proposal Agreement disputes rely on a decentralized oracle protocol referred to 
 
 When a dispute occurs, a jury is formed by drafting jurors via *stake-weighted sortition*. Drafted jurors are required to commit to a ruling on the dispute within a commitment period, and then reveal their ruling after all drafted jurors have committed. The verdict is returned based on the majority decision of drafted jurors.
 
-Before the verdict is enforced, there is an opportunity to *appeal*, which repeats the adjudication process with a larger set of jurors. Appeals can be made a fixed number of times before a *final judgement round* that requires every staked juror to commit to a ruling.
+Before the verdict is enforced, there is an opportunity to *appeal*, which repeats the adjudication process with a larger set of jurors. Appeals can be made a fixed number of times before a *final judgment round* that requires every staked juror to commit to a ruling.
 
 ### Juror Staking
 
@@ -92,7 +92,7 @@ The sortition tree must be updated between terms as the proportional stake of ju
 
 ### Juror Ruling
 
-Once jurors have been drafted the dispute enters a deliberation phase where jurors are expected to provide a ruling in favor of one party or the other. Jurors are expected to make an independent judgement, but we assume that out of band communication between jurors is possible. For particularly nuanced cases there may even be forums and discussion threads used to discuss the details of a dispute. However, to minimize the ability of jurors to simply copy the voting behavior of other jurors we require rulings to be submitted in a two-phase commit reveal process.
+Once jurors have been drafted the dispute enters a deliberation phase where jurors are expected to provide a ruling in favor of one party or the other. Jurors are expected to make an independent judgment, but we assume that out of band communication between jurors is possible. For particularly nuanced cases there may even be forums and discussion threads used to discuss the details of a dispute. However, to minimize the ability of jurors to simply copy the voting behavior of other jurors we require rulings to be submitted in a two-phase commit reveal process.
 
 Jurors are given a certain number of terms, called the *commitment period*, to submit a hash of their ruling. After the commit period ends, jurors are given a certain number of terms to reveal their ruling, this period is called the *reveal period*. If a juror reveals their vote prior to the reveal period, anyone can use this information to penalize the juror in exchange for a reward. If a juror fails to commit and reveal a vote by the end of the *reveal period* they are penalized.
 
