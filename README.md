@@ -52,7 +52,7 @@ Before the verdict is enforced, there is an opportunity to *appeal*, which repea
 
 ### Juror Staking
 
-In order to participate as a juror, an individual must acquire ANT and then deposit it into the court's staking contract. Similar to a [token bonding curve](https://blog.relevant.community/bonding-curves-in-depth-intuition-parametrization-d3905a681e0a), the staking contract uses the current balance of deposited ANT to determine an exchange rate between ANT and the user's stake in the court. Unlike a token bonding curve, we do not treat the resulting economic stake as a transferrable token. This curved staking approach encourages jurors to participate early and establish the credibility of an instance of the court, and enables the network to deploy multiple instances of the court protocol which compete with one another by specializing in resolving specific types of disputes.
+In order to participate as a juror, an individual must acquire ANT and then deposit it into the court's staking contract. Similar to a [token bonding curve](https://blog.relevant.community/bonding-curves-in-depth-intuition-parametrization-d3905a681e0a), the staking contract uses the current balance of deposited ANT to determine an exchange rate between ANT and the user's stake in the court. Unlike a token bonding curve, we do not treat the resulting economic stake as a transferrable token. This curved staking approach encourages jurors to participate early and establish the credibility of an instance of the court, and enables the Network to deploy multiple instances of the court protocol which compete with one another by specializing in resolving specific types of disputes.
 
 The staking and un-staking actions are governed by the following formulas:
 
@@ -137,7 +137,7 @@ Governance authority over the court is granted to ANT holders by way of an Arago
 
 Initially, all votes will last 1 Month, require 50% approval and 1% approval quorum. Creating votes requires depositing 1000 ANT into a *proposal agreement* with the following terms:
 
-> Proposals must be made in good faith with the intention to improve the network's operational efficiency, quality, or breadth of service, and benefit all ANT holders in equal measure.
+> Proposals must be made in good faith with the intention to improve the Network's operational efficiency, quality, or breadth of service, and benefit all ANT holders in equal measure.
 
 The organization will face many operational decisions, including but not limited to the following:
 
