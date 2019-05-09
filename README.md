@@ -118,7 +118,7 @@ In case that no juror in a round voted for the final ruling, the juror tokens wi
 
 **Redistributing Collateral**
 
-If there was any appeal rounds before the final ruling, the total amount of collateral that was deposited for triggering each round will be assigned to the appealer supporting the final ruling.
+If there were any appeal rounds before the final ruling, the total amount of collateral that was deposited for triggering each round will be assigned to the appealer supporting the final ruling.
 
 In the first adjudication round of a dispute (the original round created with the dispute), the Court doesn't directly manage collateral (as there may not be collateral at all or a different token is used). In case that there was collateral at stake depending on the Court ruling, whenever the Court has a final ruling it will notify the contract being *arbitrated* with the ruling and this contract can then distribute collateral.
 
