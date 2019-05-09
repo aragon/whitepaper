@@ -2,7 +2,7 @@
 
 The Aragon Network is an Aragon organization that provides infrastructure and services to users of the Aragon platform, and is governed by ANT holders. The existing Aragon infrastructure enables users to create and manage organizations. Each Aragon organization exists as a set of smart contracts that define the organization's stakeholders and their associated rights and privileges. However, some rights and privileges require subjective constraints that cannot be encoded in a smart contract directly.
 
-The Aragon Court is a decentralized oracle protocol developed and maintained by the Aragon Network. The Aragon Court can be used by organizations, including the Aragon Network itself, to resolve subjective disputes with binary outcomes. When combined with the existing Aragon infrastructure, it enables an organization to create *proposal agreements* that define subjective constraints on an organization's operation and can be enforced by minority stakeholders.
+The Aragon Court is a decentralized oracle protocol developed and maintained by the Aragon Network. The Aragon Court can be used by organizations, including the Aragon Network itself, to resolve subjective disputes with binary outcomes. When combined with the existing Aragon infrastructure, it enables an organization to create *Proposal Agreements* that define subjective constraints on an organization's operation and can be enforced by minority stakeholders.
 
 ## Aragon's Permission Architecture
 
@@ -26,7 +26,7 @@ Proposal Agreements are designed to facilitate these types of constraints within
 
 The human-readable terms can be used to protect the interest of minority stakeholders as described in the previous section, but they can also be used to define basic quality standards for what supplemental information must be included with a proposal.
 
-Proposal agreements can be paired with a Voting app by assigning the *create vote*, *pause vote*, and *cancel vote* roles.
+Proposal Agreements can be paired with a Voting app by assigning the *create vote*, *pause vote*, and *cancel vote* roles.
 
 ![](images/proposal-agreement-permissions.png)
 
