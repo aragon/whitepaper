@@ -64,7 +64,7 @@ The staking and un-staking actions are governed by the following formulas:
 
 ![](http://latex.codecogs.com/gif.latex?c&space;=&space;b&space;*&space;\(1&plus;s&space;/&space;t\)^{\frac{1}{r}})
 
-Where `s` is the resulting stake in the court and `d` is the users deposit. When un-staking, `c` is the amount of ANT returned. The other variables represent state and parameters of the staking curve. `r` is the ratio of deposits to total stake, `b` is the balance of ANT in the staking contract, and `t` is the total amount of distributed stake.  
+Where `s` is the resulting stake in the court and `d` is the user's deposit. When un-staking, `c` is the amount of ANT returned. The other variables represent state and parameters of the staking curve. `r` is the ratio of deposits to total stake, `b` is the balance of ANT in the staking contract, and `t` is the total amount of distributed stake.  
 
 Once a prospective juror has staked they are considered *active* and eligible to be drafted to review cases. A distinction is made between a juror being *staked* and *active.* An *active* juror can *de-activate* themselves at any time, but they will not be able to *un-stake* until any pending disputes they have been involved in have completed.
 
@@ -114,7 +114,7 @@ A final ruling is reached if a preliminary ruling is produced and neither side a
 
 After a final ruling has been decided, all the adjudication rounds in the dispute can be settled. Jurors that didn't vote for the final ruling will lose the tokens that they had at stake. All the aggregated penalties and the juror fees in a round will be distributed proportionally among the jurors that voted for the final ruling option.
 
-In case that no juror in a round voted for the final ruling, the juror tokens will be burned and the collected juror fees for the round will be refunded to the creator of the dispute (in case that it was the first round) or to the appealing party that sided with the final ruling.
+In case that no juror in a round voted for the final ruling, the juror tokens will be slashed and the collected juror fees for the round will be refunded to the creator of the dispute (in case that it was the first round) or to the appealing party that sided with the final ruling.
 
 **Redistributing Collateral**
 
