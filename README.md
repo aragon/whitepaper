@@ -14,11 +14,12 @@ By chaining multiple contracts together we can define complex criteria which con
 
 *Figure 1: Token Manager --> Voting --> Finance --> Vault*
 
-The vault, which stores the organizations assets, grants the transfer role only to the finance application, which internally implements budgeting logic. The finance application's *Create Payments* role is assigned exclusively to the Voting application so that the only way to create payments is to successfully pass a vote. The voting application's  *Create Votes* role is granted exclusively to the Token Manager of the organization's native token. The Token Manager will forward actions from Token Holders the Token Manager's associated token.
+The Vault, which stores the organizations assets, grants the transfer role only to the Finance application, which internally implements budgeting logic. The Finance application's *Cre
+ate Payments* role is assigned exclusively to the Voting application so that the only way to create payments is to successfully pass a vote. The Voting application's  *Create Votes* role is granted exclusively to the Token Manager of the organization's native token. The Token Manager will forward actions from token holder's of the Token Manager's associated token.
 
 This process effectively constrains how funds can be transferred in the organization, but the approval of a given transfer is ultimately authorized by majority vote. It's not unreasonable for a minority stakeholder to be concerned that a majority of stakeholders might decide to liquidate the organization and exclude minority stakeholders in the process.
 
-To avoid this the organization's need a mechanism to impose a constraint that can be enforced by the actions of any individual within the organization rather than a majority of participants.
+To avoid this an organization needs a mechanism to impose a constraint that can be enforced by the actions of any individual within the organization rather than a majority of participants.
 
 ### Proposal Agreements
 
