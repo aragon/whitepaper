@@ -16,11 +16,7 @@ By chaining multiple contracts together we can define complex criteria which con
 
 The vault, which stores the organizations assets, grants the transfer role only to the finance application, which internally implements budgeting logic. The finance application's *Create Payments* role is assigned exclusively to the Voting application so that the only way to create payments is to successfully pass a vote. The voting application's  *Create Votes* role is granted exclusively to the Token Manager of the organization's native token. The Token Manager will forward actions from Token Holders the Token Manager's associated token.
 
-<<<<<<< HEAD
 This process effectively constrains how funds can be transferred in the organization, but the approval of a given transfer is ultimately authorized by majority vote. It's not unreasonable for a minority stakeholder to be concerned that a majority of stakeholders might decide to liquidate the organization and exclude minority stakeholders in the process.
-=======
-This process effectively constrains how funds can be transferred in the organization, but the approval of a given transfer is ultimately authorized by majority vote, and it's not unreasonable for a minority stakeholder to be concerned that a majority of the organization's members might decide liquidate the organization and exclude minority stakeholders in the process.
->>>>>>> 50506959991d8a9b5f9b30d34fd70327b1767b20
 
 To avoid this the organization's need a mechanism to impose a constraint that can be enforced by the actions of any individual within the organization rather than a majority of participants.
 
@@ -108,7 +104,7 @@ Each dispute is subject to a maximum number of appeal rounds. Since each dispute
 
 Appeals can be triggered after a dispute has been resolved with a preliminary ruling in favor of one outcome or the other. In order for an Appeal to occur both sides of the dispute must deposit additional collateral. If neither side deposits the required collateral to trigger the next appeal round, the preliminary ruling is finalized. If only one side deposits the required collateral the ruling is immediately finalized in their favor. If both sides deposit the required collateral then the appeal round is scheduled.
 
-The amount of required collateral depends on the appeal round and is a multiple of the fees required to compensate selected jurors. In higher appeal rounds where more juror stake is selected to adjudicate the dispute, the base amount of collateral required will be higher. The total amount of collateral required to appeal will be a multiple of this amount, 2x the base amount for the side which is reinforcing the preliminary ruling, and 3x the base amount for side which is appealing the preliminary ruling. When the dispute is finalized the base amount is used to compensate jurors and the remainder is used to compensate the winning party for risking their appeal deposit. Appeal deposits can be crowdsourced so they do not need to be supplied by a single party. 
+The amount of required collateral depends on the appeal round and is a multiple of the fees required to compensate selected jurors. In higher appeal rounds where more juror stake is selected to adjudicate the dispute, the base amount of collateral required will be higher. The total amount of collateral required to appeal will be a multiple of this amount, 2x the base amount for the side which is reinforcing the preliminary ruling, and 3x the base amount for side which is appealing the preliminary ruling. When the dispute is finalized the base amount is used to compensate jurors and the remainder is used to compensate the winning party for risking their appeal deposit. Appeal deposits can be crowdsourced so they do not need to be supplied by a single party.
 
 ### Final Ruling
 
