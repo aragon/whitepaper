@@ -96,13 +96,13 @@ Once jurors have been drafted the dispute enters a deliberation phase where juro
 
 Jurors are given a certain number of terms, called the *commitment period*, to submit a hash of their ruling. After the commit period ends, jurors are given a certain number of terms to reveal their ruling, this period is called the *reveal period*. If a juror reveals their vote prior to the reveal period, anyone can use this information to penalize the juror in exchange for a reward. If a juror fails to commit and reveal a vote by the end of the *reveal period* they are penalized.
 
-After the conclusion of *reveal period*, a majority of support among drafted jurors is used as a *preliminary ruling*. The preliminary ruling is considered final if there is no appeal made during the *appeal period*.  
+After the conclusion of the *reveal period*, a majority of support among drafted jurors is used as a *preliminary ruling*. The preliminary ruling is considered final if there is no appeal made during the *appeal period*.  
 
 ### Appeals
 
-Each dispute is subject to a maximum number of appeal rounds. Since each dispute and appeal round has a fixed duration, the max appeal rounds also determines the maximum amount of time before a final decision is reached.
+Each dispute is subject to a maximum number of appeal rounds. Since each dispute and appeal round has a fixed duration, the maximum number of appeal rounds also determines the maximum amount of time before a final decision is reached.
 
-Appeals can be triggered after a dispute has been resolved with a preliminary ruling in favor of one outcome or the other. In order for an Appeal to occur both sides of the dispute must deposit additional collateral. If neither side deposits the required collateral to trigger the next appeal round, the preliminary ruling is finalized. If only one side deposits the required collateral the ruling is immediately finalized in their favor. If both sides deposit the required collateral then the appeal round is scheduled.
+Appeals can be triggered after a dispute has been resolved with a preliminary ruling in favor of one outcome or the other. In order for an appeal to occur both sides of the dispute must deposit additional collateral. If neither side deposits the required collateral to trigger the next appeal round, the preliminary ruling is finalized. If only one side deposits the required collateral the ruling is immediately finalized in their favor. If both sides deposit the required collateral then the appeal round is scheduled.
 
 The amount of required collateral depends on the appeal round and is a multiple of the fees required to compensate selected jurors. In higher appeal rounds where more juror stake is selected to adjudicate the dispute, the base amount of collateral required will be higher. The total amount of collateral required to appeal will be a multiple of this amount, 2x the base amount for the side which is reinforcing the preliminary ruling, and 3x the base amount for side which is appealing the preliminary ruling. When the dispute is finalized the base amount is used to compensate jurors and the remainder is used to compensate the winning party for risking their appeal deposit. Appeal deposits can be crowdsourced so they do not need to be supplied by a single party.
 
@@ -120,7 +120,7 @@ In case that no juror in a round voted for the final ruling, the juror tokens wi
 
 If there were any appeal rounds before the final ruling, the total amount of collateral that was deposited for triggering each round will be assigned to the appealer supporting the final ruling.
 
-In the first adjudication round of a dispute (the original round created with the dispute), the Court doesn't directly manage collateral (as there may not be collateral at all or a different token is used). In case that there was collateral at stake depending on the Court ruling, whenever the Court has a final ruling it will notify the contract being *arbitrated* with the ruling and this contract can then distribute collateral.
+In the first adjudication round of a dispute (the original round created with the dispute), the Court doesn't directly manage collateral (as there may not be collateral at all or a different token is used). In cases where there is collateral at stake depending on the Court ruling, whenever the Court has a final ruling it will notify the contract being *arbitrated* with the ruling and this contract can then redistribute collateral.
 
 ## Fee Summary
 
