@@ -24,7 +24,7 @@ To avoid this organization's need a mechanism to impose a constraint that can be
 
 Proposal Agreements are designed to facilitate these types of constraints within Aragon organizations. They enable an organization to define human-readable terms that proposals must conform to and require proposers to deposit collateral before their proposal can be forwarded to a voting app.
 
-The human readable terms can be used to protect the interest of minority stakeholders as described in the previous section, but they can also be used to define basic quality standards for what supplemental information must be included with a proposal.
+The human-readable terms can be used to protect the interest of minority stakeholders as described in the previous section, but they can also be used to define basic quality standards for what supplemental information must be included with a proposal.
 
 Proposal agreements can be paired with a Voting app by assigning the *create vote*, *pause vote*, and *cancel vote* roles.
 
