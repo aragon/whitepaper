@@ -114,7 +114,7 @@ A final ruling is reached if a preliminary ruling is produced and neither side a
 
 After a final ruling has been decided, all the adjudication rounds in the dispute can be settled. Jurors that didn't vote for the final ruling will lose the tokens that they had at stake. All the aggregated penalties and the juror fees in a round will be distributed proportionally among the jurors that voted for the final ruling option.
 
-In case that no juror in a round voted for the final ruling, the juror tokens will be burned and the collected juror fees for the round will be refunded to the creator of the dispute (in case that it was the first round) or to the appealing party that sided with the final ruling.
+In the case that no juror in a round voted for the final ruling, the juror tokens will be burned and the collected juror fees for the round will be refunded to the creator of the dispute (in the case that it was the first round) or to the appealing party that sided with the final ruling.
 
 **Redistributing Collateral**
 
