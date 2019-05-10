@@ -86,9 +86,7 @@ To make the draft function efficient, active jurors are arranged into a tree str
 
 *Figure 4: Traversing the sortition tree to select a juror*
 
-Due to gas constraints, the draft function can select at most 100 juror slots per call. More that 100 juror slots can be selected using multiple transactions. To minimize the number of transactions required to select a specific proportion of total stake, the required amount of stake per juror slot can be increased in subsequent appeal rounds.
-
-The sortition tree must be updated between terms as the proportional stake of jurors changes. Changes are queued and executed when the heartbeat function is called.
+Due to gas constraints, the draft function can select at most 100 juror slots per call. More that 100 juror slots can be selected using multiple transactions. 
 
 ### Juror Ruling
 
