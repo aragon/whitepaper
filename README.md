@@ -6,7 +6,7 @@ The Aragon Court is a decentralized oracle protocol developed and maintained by 
 
 ## Aragon's Permission Architecture
 
-Aragon organizations control which addresses have access to perform actions on behalf of the organization in a permission registry called the *Access Control List*. Addresses on the registry can be externally owned accounts or contracts. Some contracts are intended to *forward* actions based on pre-defined criteria, for example a voting app will forward action after a successful approval vote.
+Aragon organizations control which addresses have access to perform actions on behalf of the organization in a permission registry called the *Access Control List*. Addresses on the registry can be externally owned accounts or contracts. Some contracts are intended to *forward* actions based on pre-defined criteria, for example, a voting app will forward action after a successful approval vote.
 
 By chaining multiple contracts together we can define complex criteria which constrain how actions can be performed within the organization. To illustrate this we can look at a common scenario where an organization wants to allow treasury funds to be transferred, but only if they are 1) proposed by a member of the organization, 2) approved by a majority of members, and 3) within a pre-determined budget. This can be accomplished by configuring a chain of permissions with each link imposing logical constraints on the final action as follows:
 
@@ -52,25 +52,25 @@ Before the verdict is enforced, there is an opportunity to *appeal*, which repea
 
 ### Juror Staking
 
-In order to participate as a juror, an individual must acquire ANT and then deposit it into the court's staking contract. Similar to a [token bonding curve](https://blog.relevant.community/bonding-curves-in-depth-intuition-parametrization-d3905a681e0a), the staking contract uses the current balance of deposited ANT to determine an exchange rate between ANT and the user's stake in the court. Unlike a token bonding curve, we do not treat the resulting economic stake as a transferrable token. This curved staking approach encourages jurors to participate early and establish the credibility of an instance of the court, and enables the Network to deploy multiple instances of the court protocol which compete with one another by specializing in resolving specific types of disputes.
+In order to participate as a juror, an individual must acquire ANT and then deposit it into the Court's staking contract. Similar to a [token bonding curve](https://blog.relevant.community/bonding-curves-in-depth-intuition-parametrization-d3905a681e0a), the staking contract uses the current balance of deposited ANT to determine an exchange rate between ANT and the user's stake in the Court. Unlike a token bonding curve, we do not treat the resulting economic stake as a transferable token. This curved staking approach encourages jurors to participate early and establish the credibility of an instance of the Court, and enables the Network to deploy multiple instances of the Court protocol which compete with one another by specializing in resolving specific types of disputes.
 
 The staking and un-staking actions are governed by the following formulas:
 
 **Staking:**
 
-![](http://latex.codecogs.com/gif.latex?s&space;=&space;t&space;*&space;\(\(1&space;&plus;&space;d&space;/&space;b\)^r-1)
+![](http://latex.codecogs.com/gif.latex?s&space;=&space;t&space;*&space;\(\(1&space;&plus;&space;d&space;/&space;b\)^r-1\))
 
 **Unstaking:**
 
 ![](http://latex.codecogs.com/gif.latex?c&space;=&space;b&space;*&space;\(1&plus;s&space;/&space;t\)^{\frac{1}{r}})
 
-Where `s` is the resulting stake in the court and `d` is the user's deposit. When un-staking, `c` is the amount of ANT returned. The other variables represent state and parameters of the staking curve. `r` is the ratio of deposits to total stake, `b` is the balance of ANT in the staking contract, and `t` is the total amount of distributed stake.  
+Where `s` is the resulting stake in the Court and `d` is the user's deposit. When un-staking, `c` is the amount of ANT returned. The other variables represent the state and parameters of the staking curve. `r` is the ratio of deposits to the total stake, `b` is the balance of ANT in the staking contract, and `t` is the total amount of distributed stake.  
 
-Once a prospective juror has staked they are considered *active* and eligible to be drafted to review cases. A distinction is made between a juror being *staked* and *active.* An *active* juror can *de-activate* themselves at any time, but they will not be able to *un-stake* until any pending disputes they have been involved in have completed.
+Once a prospective juror has staked they are considered *active* and eligible to be drafted to review cases. A distinction is made between a juror being *staked* and *active.* An *active* juror can *de-activate* themselves at any time, but they will not be able to *un-stake* until all pending disputes they have been involved in have completed.
 
 ### Juror Drafting
 
-Juror drafting is managed via a process of *stake-weighted sortition*. In order to manage the sortition process efficiently, all of the court's operations are scheduled into *Terms*. *Terms* are defined in seconds and cannot be changed after the Court has been initialized. Terms are transitioned by calling a public *heartbeat* function which is used to make updates to *active juror stakes* from the preceding term and generate a new *random seed* for use during the subsequent term. A portion of the courts fees are used to compensate the caller of the heartbeat for gas usage.
+Juror drafting is managed via a process of *stake-weighted sortition*. In order to manage the sortition process efficiently, all of the Court's operations are scheduled into *Terms*. *Terms* are defined in seconds and cannot be changed after the Court has been initialized. Terms are transitioned by calling a public *heartbeat* function which is used to make updates to *active juror stakes* from the preceding term and generate a new *random seed* for use during the subsequent term. A portion of the Court fees is used to compensate the caller of the heartbeat for gas usage.
 
 ![](images/terms.png)
 
@@ -78,7 +78,7 @@ Juror drafting is managed via a process of *stake-weighted sortition*. In order 
 
 For each dispute or appeal we have a number of available *juror slots* that must be filled. Each slot can be thought of as a seat on the jury. A single juror can occupy multiple seats, but each seat is associated with an equal portion of their stake, which is committed and locked until the dispute is fully resolved.
 
-One block after the heartbeat function is executed for the term in which a dispute is scheduled, a function to draft jurors for that dispute can be called. This function can be called at any point during the term and the resulting selection of jurors will be the same. If this transaction does not happen before the term ends the dispute must be rescheduled for a subsequent court term.
+One block after the heartbeat function is executed for the term in which a dispute is scheduled, a function to draft jurors for that dispute can be called. This function can be called at any point during the term and the resulting selection of jurors will be the same. If this transaction does not happen before the term ends the dispute must be rescheduled for a subsequent Court term.
 
 To make the draft function efficient, active jurors are arranged into a tree structure based on their stake. Using the random seed for the term and the id of the dispute a random number is generated and used to traverse the tree and arrive at a juror. This process is repeated until all juror slots for the dispute have been filled.
 
@@ -86,11 +86,11 @@ To make the draft function efficient, active jurors are arranged into a tree str
 
 *Figure 4: Traversing the sortition tree to select a juror*
 
-Due to gas constraints, the draft function can select at most 100 juror slots per call. More that 100 juror slots can be selected using multiple transactions. 
+Due to gas constraints, the draft function can select at most 100 juror slots per call. More than 100 juror slots can be selected using multiple transactions. 
 
 ### Juror Ruling
 
-Once jurors have been drafted the dispute enters a deliberation phase where jurors are expected to provide a ruling in favor of one party or the other. Jurors are expected to make an independent judgment, but we assume that out of band communication between jurors is possible. For particularly nuanced cases there may even be forums and discussion threads used to discuss the details of a dispute. However, to minimize the ability of jurors to simply copy the voting behavior of other jurors we require rulings to be submitted in a two-phase commit reveal process.
+Once jurors have been drafted, the dispute enters a deliberation phase where jurors are expected to provide a ruling in favor of one party or the other. Jurors are expected to make an independent judgment, but we assume that out of band communication between jurors is possible. For particularly nuanced cases there may even be forums and discussion threads used to discuss the details of a dispute. However, to minimize the ability of jurors to simply copy the voting behavior of other jurors we require rulings to be submitted in a two-phase commit reveal process.
 
 Jurors are given a certain number of terms, called the *commitment period*, to submit a hash of their ruling. After the commit period ends, jurors are given a certain number of terms to reveal their ruling, this period is called the *reveal period*. If a juror reveals their vote prior to the reveal period, anyone can use this information to penalize the juror in exchange for a reward. If a juror fails to commit and reveal a vote by the end of the *reveal period* they are penalized.
 
@@ -100,13 +100,13 @@ After the conclusion of the *reveal period*, a majority of support among drafted
 
 Each dispute is subject to a maximum number of appeal rounds. Since each dispute and appeal round has a fixed duration, the maximum number of appeal rounds also determines the maximum amount of time before a final decision is reached.
 
-Appeals can be triggered after a dispute has been resolved with a preliminary ruling in favor of one outcome or the other. In order for an appeal to occur both sides of the dispute must deposit additional collateral. If neither side deposits the required collateral to trigger the next appeal round, the preliminary ruling is finalized. If only one side deposits the required collateral the ruling is immediately finalized in their favor. If both sides deposit the required collateral then the appeal round is scheduled.
+Appeals can be triggered after a dispute has been resolved with a preliminary ruling in favor of one outcome or the other. In order for an appeal to occur, both sides of the dispute must deposit additional collateral. If neither side deposits the required collateral to trigger the next appeal round, the preliminary ruling is finalized. If only one side deposits the required collateral, the ruling is immediately finalized in their favor. If both sides deposit the required collateral then the appeal round is scheduled.
 
-The amount of required collateral depends on the appeal round and is a multiple of the fees required to compensate selected jurors. In higher appeal rounds where more juror stake is selected to adjudicate the dispute, the base amount of collateral required will be higher. The total amount of collateral required to appeal will be a multiple of this amount, 2x the base amount for the side which is reinforcing the preliminary ruling, and 3x the base amount for side which is appealing the preliminary ruling. When the dispute is finalized the base amount is used to compensate jurors and the remainder is used to compensate the winning party for risking their appeal deposit. Appeal deposits can be crowdsourced so they do not need to be supplied by a single party.
+The amount of required collateral depends on the appeal round and is a multiple of the fees required to compensate selected jurors. In higher appeal rounds where more juror stake is selected to adjudicate the dispute, the base amount of collateral required will be higher. The total amount of collateral required to appeal will be a multiple of this amount, 2x the base amount for the side which is reinforcing the preliminary ruling, and 3x the base amount for the side which is appealing the preliminary ruling. When the dispute is finalized the base amount is used to compensate jurors and the remainder is used to compensate the winning party for risking their appeal deposit. Appeal deposits can be crowdsourced so they do not need to be supplied by a single party.
 
 ### Final Ruling
 
-A final ruling is reached if a preliminary ruling is produced and neither side appeals, if only one side appeals, or if the maximum number of appeals are reached. When a final ruling is produced, the court needs to process collateral and stake redistribution.
+A final ruling is reached if a preliminary ruling is produced and neither side appeals, if only one side appeals, or if the maximum number of appeals are reached. When a final ruling is produced, the Court needs to process collateral and stake redistribution.
 
 **Redistributing and Unlocking Juror Stake**
 
@@ -122,18 +122,18 @@ In the first adjudication round of a dispute (the original round created with th
 
 ## Fee Summary
 
-In order for the court to operate fees must be captured from users to compensate jurors for their effort, risk, and opportunity cost of capital. The market for dispute resolution services exhibits some dynamics of a predator-prey relationship where the demand to participate as a juror depends on the volume of disputes, and the volume of disputes depends on the reliable presence of honest jurors.
+In order for the Court to operate fees must be captured from users to compensate jurors for their effort, risk, and opportunity cost of capital. The market for dispute resolution services exhibits some dynamics of a predator-prey relationship where the demand to participate as a juror depends on the volume of disputes, and the volume of disputes depends on the reliable presence of honest jurors.
 
-Disputes will be more rare if there is a common expectation that the dispute resolution process is reliable and fair. The result is that as disputes become more rare, or are settled in early dispute rounds, the incentive to participate as a juror decreases. As these incentives decrease there will be less stake in the court and the court may be perceived as less reliable, resulting in more disputes and more appeals leading to overall less consistent and efficient operation. To resolve this issue, fees are captured not just when disputes occur, but also on a recurring basis from users even when no disputes occur.
+Disputes will be rarer if there is a common expectation that the dispute resolution process is reliable and fair. The result is that as disputes become more rare, or are settled in early dispute rounds, the incentive to participate as a juror decreases. As these incentives decrease there will be less stake in the Court and it may be perceived as less reliable, resulting in more disputes and more appeals leading to overall less consistent and efficient operation. To resolve this issue, fees are captured not just when disputes occur, but also on a recurring basis from users even when no disputes occur.
 
 - **Subscription Fee**: A subscription fee is imposed on organizations that choose to use the Court as an arbitration provider. Subscription fees must be paid on a recurring basis for the agreement to remain valid. These fees are split between the Aragon Network's treasury and among all actively staked jurors.
 - **Dispute Fee**: Dispute fees are captured at the time a dispute or appeal occurs and are calculated based on a flat amount multiplied by the amount of juror stake selected in the dispute or appeal round. These fees are distributed only to drafted jurors who rule in favor of the winning side.
 
-This fee structure ensures that there is a consistent stream of revenue to support the operation of the court even if disputes occur irregularly. Fees are governed by the Aragon Network organization as described below.
+This fee structure ensures that there is a consistent stream of revenue to support the operation of the Court even if disputes occur irregularly. Fees are governed by the Aragon Network organization as described below.
 
 ## Governance
 
-Governance authority over the court is granted to ANT holders by way of an Aragon organization.
+Governance authority over the Court is granted to ANT holders by way of an Aragon organization.
 
 Initially, all votes will last 1 Month, require 50% Support and 1% Minimum Acceptance Quorum. Creating votes requires depositing 1000 ANT into a *Proposal Agreement* with the following terms:
 
@@ -142,5 +142,5 @@ Initially, all votes will last 1 Month, require 50% Support and 1% Minimum Accep
 The organization will face many operational decisions, including but not limited to the following:
 
 1. Changes to the organization's permissions or the content of the proposal agreement itself.
-2. Changes to court fees and other configuration parameters.
+2. Changes to Court fees and other configuration parameters.
 3. Managing a treasury which is funded via a portion of the Court fees.
