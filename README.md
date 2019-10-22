@@ -6,7 +6,7 @@ The Aragon Court is a decentralized oracle protocol developed and maintained by 
 
 ## Aragon's Permission Architecture
 
-Aragon organizations control which addresses have access to perform actions on behalf of the organization in a permission registry called the *Access Control List*. Addresses on the registry can be externally owned accounts or contracts. Some contracts are intended to *forward* actions based on pre-defined criteria, for example, a voting app will forward action after a successful approval vote.
+Aragon organizations control which addresses have access to perform actions on behalf of the organization in a permission registry called the *Access Control List*. Addresses on the registry can be externally owned accounts or contracts. Some contracts are intended to *forward* actions based on pre-defined criteria, for example, a Voting app will forward action after a successful approval vote.
 
 By chaining multiple contracts together we can define complex criteria which constrain how actions can be performed within the organization. To illustrate this we can look at a common scenario where an organization wants to allow treasury funds to be transferred, but only if they are 1) proposed by a member of the organization, 2) approved by a majority of members, and 3) within a pre-determined budget. This can be accomplished by configuring a chain of permissions with each link imposing logical constraints on the final action as follows:
 
@@ -14,7 +14,7 @@ By chaining multiple contracts together we can define complex criteria which con
 
 *Figure 1: Token Manager --> Voting --> Finance --> Vault*
 
-The Vault, which stores the organization's assets, grants the transfer role only to the Finance application, which internally implements budgeting logic. The Finance application's *Create Payments* role is assigned exclusively to the Voting application so that the only way to create payments is to successfully pass a vote. The Voting application's  *Create Votes* role is granted exclusively to the Token Manager of the organization's native token. The Token Manager will forward actions from token holders of the Token Manager's associated token.
+The Vault, which stores the organization's assets, grants the *Transfer* role only to the Finance application, which internally implements budgeting logic. The Finance application's *Create Payments* role is assigned exclusively to the Voting application so that the only way to create payments is to successfully pass a vote. The Voting application's  *Create Votes* role is granted exclusively to the Token Manager of the organization's native token. The Token Manager will forward actions from token holders of the Token Manager's associated token.
 
 This process effectively constrains how funds can be transferred in the organization, but the approval of a given transfer is ultimately authorized by majority vote. It's not unreasonable for a minority stakeholder to be concerned that a majority of stakeholders might decide to liquidate the organization and exclude minority stakeholders in the process.
 
@@ -22,11 +22,11 @@ To avoid a hostile liquidation scenario like this an organization needs a mechan
 
 ### Proposal Agreements
 
-Proposal Agreements are designed to facilitate these types of constraints within Aragon organizations. They enable an organization to define human-readable terms that proposals must conform to and require proposers to deposit collateral before their proposal can be forwarded to a voting app.
+Proposal Agreements are designed to facilitate these types of constraints within Aragon organizations. They enable an organization to define human-readable terms that proposals must conform to and require proposers to deposit collateral before their proposal can be forwarded to a Voting app.
 
 The human-readable terms can be used to protect the interest of minority stakeholders as described in the previous section, but they can also be used to define basic quality standards for what supplemental information must be included with a proposal.
 
-Proposal Agreements can be paired with a Voting app by assigning the *create vote*, *pause vote*, and *cancel vote* roles.
+Proposal Agreements can be paired with a Voting app by assigning the *Create Vote*, *Pause Vote*, and *Cancel Vote* roles.
 
 ![](images/proposal-agreement-permissions.png)
 
@@ -44,7 +44,7 @@ Once both parties have submitted evidence and dispute fees, the case is schedule
 
 ## Aragon Court Protocol
 
-Proposal Agreement disputes rely on a decentralized oracle protocol referred to as the *court* where *jurors* stake the Aragon Network's native asset ANT in order to earn the right to perform dispute resolution service and earn a portion of *dispute resolution fees*.
+Proposal Agreement disputes rely on a decentralized oracle protocol referred to as the *Court* where *jurors* stake the Aragon Network's native asset ANT in order to earn the right to perform dispute resolution service and earn a portion of *dispute resolution fees*.
 
 When a dispute occurs, a jury is formed by drafting jurors via *stake-weighted sortition*. Drafted jurors are required to commit to a ruling on the dispute within a commitment period, and then reveal their ruling after all drafted jurors have committed. The verdict is returned based on the majority decision of drafted jurors.
 
